@@ -17,6 +17,15 @@ The program will launch into a command-line menu with 5 selectable options. You 
 5. **Quit:**  
    Exits the program.
 
+## Building
+
+Built and tested using GCC. Might work outside of Windows, but `system("cls")` will possibly spam your console log.
+
+```powershell
+gcc main.c -o main.exe
+.\main.exe
+```
+
 ## Notes
 
 Despite the increase in complexity compared to my first project, this one utilized a lot of similar concepts and went much smoother. That is not to say everything went smooth as I introduced my first usage of functions, loops, arrays, pointers, and switch statements.
@@ -28,12 +37,3 @@ In my first project `scanf()` haunted me. Well in this one the idea of sorting a
 ### Delay
 
 This was completely unnecessary to learn about, but still an interesting experience. C doesn't really have a default uniform way of handling delays. Linux and Windows both have ways to use sleep, but I didn't want the same reliance my last project had which was `<Windows.h>`. The solution is surprisingly simple. All you need to do is take a counter that increments with time and save it to a variable then use a while loop that runs until the current time is greater than the stored time + whatever delay you want. Obviously the big thing here is to standardize everything into the same unit of time. `<time.h>` has a function I used in my first project `clock()`. Now this function usually returns milliseconds; however, this is based on `CLOCKS_PER_SEC`. Basically to ensure it's always in milliseconds you just multiply it by 1000 then divide by `CLOCKS_PER_SEC`, and this order is important because you can truncate the number if it's too small. One last thing, this while loop is not efficient as operating systems can just sleep the process if they use their related functions which does not actively consume the CPU.
-
-## Building
-
-Built and tested using GCC. Might work outside of Windows, but `system("cls")` will possibly spam your console log.
-
-```powershell
-gcc main.c -o main.exe
-.\main.exe
-```
